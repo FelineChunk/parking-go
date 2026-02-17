@@ -1,0 +1,24 @@
+generator client {
+   provider = "prisma-client"
+   output   = "../generated/prisma"
+
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model transactions {
+  id_transaction Int                @id @default(autoincrement())
+  time_in        DateTime           @default(now()) @db.Timestamp(6)
+  time_out       DateTime?          @db.Timestamp(6)
+  card_id        String?            @db.VarChar(50)
+  fee            Int?               @default(dbgenerated("\nCASE\n    WHEN (time_out IS NULL) THEN (0)::numeric\n    ELSE (ceil((EXTRACT(epoch FROM (time_out - time_in)) / 3600.0)) * (2000)::numeric)\nEND"))
+  status         transaction_status @default(IN)
+}
+
+enum transaction_status {
+  IN
+  OUT
+  DONE
+}
