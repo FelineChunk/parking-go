@@ -1,5 +1,5 @@
   import { useEffect, useState } from "react";
-  import { getParkings } from "../../service/transaksiService";
+  import { getParkings } from "../../service/api";
 
   interface Transaksi {
     id_transaksi: number;
