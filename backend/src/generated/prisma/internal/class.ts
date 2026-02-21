@@ -12,7 +12,7 @@
  */
 
 import * as runtime from "@prisma/client/runtime/client"
-import type * as Prisma from "./prismaNamespace"
+import type * as Prisma from "./prismaNamespace.js"
 
 
 const config: runtime.GetPrismaClientConfig = {
@@ -20,7 +20,7 @@ const config: runtime.GetPrismaClientConfig = {
   "clientVersion": "7.4.0",
   "engineVersion": "ab56fe763f921d033a6c195e7ddeb3e255bdbb57",
   "activeProvider": "postgresql",
-  "inlineSchema": "generator client {\n  provider = \"prisma-client\"\n  output   = \"../generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n}\n\nmodel transactions {\n  id_transaction Int                @id @default(autoincrement())\n  time_in        DateTime           @default(now()) @db.Timestamp(6)\n  time_out       DateTime?          @db.Timestamp(6)\n  card_id        String?            @db.VarChar(50)\n  fee            Int?               @default(dbgenerated(\"\\nCASE\\n    WHEN (time_out IS NULL) THEN (0)::numeric\\n    ELSE (ceil((EXTRACT(epoch FROM (time_out - time_in)) / 3600.0)) * (2000)::numeric)\\nEND\"))\n  status         transaction_status @default(IN)\n}\n\nenum transaction_status {\n  IN\n  OUT\n  DONE\n}\n",
+  "inlineSchema": "generator client {\n  provider = \"prisma-client\"\n  output   = \"../src/generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n}\n\nmodel transactions {\n  id_transaction Int                @id @default(autoincrement())\n  time_in        DateTime           @default(now()) @db.Timestamp(6)\n  time_out       DateTime?          @db.Timestamp(6)\n  card_id        String?            @db.VarChar(50)\n  fee            Int?               @default(dbgenerated(\"\\nCASE\\n    WHEN (time_out IS NULL) THEN (0)::numeric\\n    ELSE (ceil((EXTRACT(epoch FROM (time_out - time_in)) / 3600.0)) * (2000)::numeric)\\nEND\"))\n  status         transaction_status @default(IN)\n}\n\nenum transaction_status {\n  IN\n  OUT\n  DONE\n}\n",
   "runtimeDataModel": {
     "models": {},
     "enums": {},
@@ -45,10 +45,10 @@ async function decodeBase64AsWasm(wasmBase64: string): Promise<WebAssembly.Modul
 }
 
 config.compilerWasm = {
-  getRuntime: async () => await import("@prisma/client/runtime/query_compiler_fast_bg.postgresql.js"),
+  getRuntime: async () => await import("@prisma/client/runtime/query_compiler_fast_bg.postgresql.mjs"),
 
   getQueryCompilerWasmModule: async () => {
-    const { wasm } = await import("@prisma/client/runtime/query_compiler_fast_bg.postgresql.wasm-base64.js")
+    const { wasm } = await import("@prisma/client/runtime/query_compiler_fast_bg.postgresql.wasm-base64.mjs")
     return await decodeBase64AsWasm(wasm)
   },
 
