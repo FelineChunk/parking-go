@@ -5,44 +5,31 @@ import Label from "../form/Label";
 import Input from "../form/input/InputField";
 import Checkbox from "../form/input/Checkbox";
 import Button from "../ui/button/Button";
-import { supabase } from "../../lib/supabase";
+import { supabase } from "../../lib/supabase"
+import { useAuth } from "../guards/AuthContext";
+
 
 export default function SignInForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState(false);
+  const { signIn } = useAuth();
   const navigate = useNavigate();
 
-  const handleLogin = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    setLoading(true);
-
-    try {
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
-      });
-
-      if (error) {
-        alert(error.message);
-        return;
-      }
-
-      const session = data.session;
-      console.log("SESSION:", session);
-
-      navigate("/");
-    } catch (err) {
-      console.error("Login error:", err);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-
+// SignInForm.tsx
+const handleLogin = async (e: React.FormEvent) => {
+  e.preventDefault();
+  try {
+    await signIn(email, password);
+    // Karena loading di Context sudah diatur, kita kasih jeda sedikit 
+    // agar state sinkron, lalu arahkan ke root.
+    console.log("Login sukses, mencoba pindah halaman...");
+    window.location.href = "/"; // Cara paling ampuh untuk reset state macet
+  } catch (err: any) {
+    alert("Login gagal: " + err.message);
+  }
+};
 
 
   return (
@@ -119,7 +106,7 @@ export default function SignInForm() {
                 </span>
               </div>
             </div>
-            <form onSubmit={handleLogin}>
+            <form onSubmit={handleLogin} >
               <div className="space-y-6">
                 <div>
                   <Label>Email</Label>
@@ -165,8 +152,8 @@ export default function SignInForm() {
                   </Link>
                 </div>
                 <div>
-                  <Button type="submit" className="w-full" size="sm" disabled={loading}>
-                    {loading ? "Signing in..." : "Sign In"}
+                  <Button type="submit" className="w-full" size="sm">
+                    Sign In
                   </Button>
                 </div>
               </div>

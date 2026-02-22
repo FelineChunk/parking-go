@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { getParkings } from "../../service/api";
-import { supabase } from "../../lib/supabase";
 
 interface Transaksi {
   id_transaksi: number;
@@ -13,48 +12,26 @@ interface Transaksi {
 }
 
 function ParkingPage() {
-
-
   const [data, setData] = useState<Transaksi[]>([]);
-  const [setSession] = useState<any>(null);
 
-
-
-  const fetchData = async () => {
-    try {
-      const res = await getParkings();
-      console.log("DATA API:", res.data);
-      setData(res.data);
-    } catch (err) {
-      console.error("ERROR:", err);
-    }
+  const fetchData = () => {
+    getParkings()
+      .then((res) => {
+        console.log("DATA API:", res.data); // 🔥 tambahin ini
+        setData(res.data);
+      })
+      .catch((err) => console.error("ERROR:", err));
   };
 
-useEffect(() => {
-  // Auth listener
-  const { data: authListener } = supabase.auth.onAuthStateChange(
-    (event, session) => {
-      console.log("AUTH EVENT:", event);
-      console.log("SESSION:", session);
-      setSession(session);
-    }
-  );
-
-  // Ambil data pertama kali
-  fetchData();
-
-  // Interval refresh data
-  const interval = setInterval(() => {
+  useEffect(() => {
     fetchData();
-  }, 5000);
 
-  // Cleanup
-  return () => {
-    authListener.subscription.unsubscribe();
-    clearInterval(interval); 
-  };
-}, []);
+    const interval = setInterval(() => {
+      fetchData();
+    }, 5000); // 🔥 auto refresh 5 detik
 
+    return () => clearInterval(interval);
+  }, []);
 
   const dataIn = data.filter((item) => item.status === "IN");
   const dataOut = data.filter((item) => item.status === "OUT");
@@ -64,7 +41,6 @@ useEffect(() => {
     if (!date) return "-";
     return new Date(date).toLocaleString();
   };
-
 
   const renderTable = (title: string, items: Transaksi[]) => (
     <div className="bg-white shadow-md rounded-xl p-5 mb-10">
