@@ -6,13 +6,15 @@ import "flatpickr/dist/flatpickr.css";
 import App from "./App";
 import { AppWrapper } from "./components/common/PageMeta";
 import { ThemeProvider } from "./context/ThemeContext";
-
+import { AuthProvider } from "./components/guards/AuthContext";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <ThemeProvider>
       <AppWrapper>
-        <App />
+        <AuthProvider>
+        <App/>
+        </AuthProvider>
       </AppWrapper>
     </ThemeProvider>
   </StrictMode>,

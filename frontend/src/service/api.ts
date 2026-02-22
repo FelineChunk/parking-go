@@ -2,20 +2,31 @@ import axios from "axios";
 import { supabase } from "../lib/supabase"; // sesuaikan path
 
 const api = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: "http://localhost:3000",
 });
 
 // 🔥 INTERCEPTOR
-api.interceptors.request.use(async (config) => {
-  const {
-    data: { session },
-  } = await supabase.auth.getSession();
-
-  if (session?.access_token) {
-    config.headers.Authorization = `Bearer ${session.access_token}`;
+// api.ts
+api.interceptors.request.use((config) => {
+  // Ambil token dari LocalStorage secara manual (jauh lebih aman & cepat)
+  const storageKey = "sb-eusjlvebwoybwaptwccf-auth-token"; // Ganti dengan ID projectmu
+  const sessionData = localStorage.getItem(storageKey);
+  
+  if (sessionData) {
+    const session = JSON.parse(sessionData);
+    const token = session.access_token;
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
   }
 
   return config;
+}, (error) => {
+  return Promise.reject(error);
 });
+
+export const getParkings = () => {
+  return api.get("/transactions");
+};
 
 export default api;
