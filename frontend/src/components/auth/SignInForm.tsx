@@ -1,11 +1,10 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { ChevronLeftIcon, EyeCloseIcon, EyeIcon } from "../../icons";
 import Label from "../form/Label";
 import Input from "../form/input/InputField";
 import Checkbox from "../form/input/Checkbox";
 import Button from "../ui/button/Button";
-import { supabase } from "../../lib/supabase"
 import { useAuth } from "../guards/AuthContext";
 
 
@@ -15,7 +14,6 @@ export default function SignInForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { signIn } = useAuth();
-  const navigate = useNavigate();
 
 // SignInForm.tsx
 const handleLogin = async (e: React.FormEvent) => {
@@ -24,7 +22,6 @@ const handleLogin = async (e: React.FormEvent) => {
     await signIn(email, password);
     // Karena loading di Context sudah diatur, kita kasih jeda sedikit 
     // agar state sinkron, lalu arahkan ke root.
-    console.log("Login sukses, mencoba pindah halaman...");
     window.location.href = "/"; // Cara paling ampuh untuk reset state macet
   } catch (err: any) {
     alert("Login gagal: " + err.message);

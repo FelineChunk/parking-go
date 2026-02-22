@@ -21,8 +21,9 @@ export const RoleRedirect = () => {
 
   // Redirect berdasarkan role
   console.log("Mengarahkan user dengan role:", role);
-  if (role === "admin") return <Navigate to="/admin" replace />;
+  if (role === "admin" || "super") return <Navigate to="/admin" replace />;
   if (role === "petugas") return <Navigate to="/petugas" replace />;
+  if (role === "owner") return <Navigate to="/owner" replace />;
   
   return <Navigate to="/unauthorized" replace />;
 };

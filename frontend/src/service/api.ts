@@ -1,12 +1,11 @@
 import axios from "axios";
-import { supabase } from "../lib/supabase"; // sesuaikan path
 
 const api = axios.create({
   baseURL: "http://localhost:3000",
 });
 
 export const getParkings = () => {
-  return api.get("/api/transactions");
+  return api.get("/transactions");
 };
 
 // 🔥 INTERCEPTOR
@@ -29,8 +28,6 @@ api.interceptors.request.use((config) => {
   return Promise.reject(error);
 });
 
-export const getParkings = () => {
-  return api.get("/transactions");
-};
+
 
 export default api;

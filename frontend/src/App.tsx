@@ -49,7 +49,7 @@ export default function App() {
           <Route
             path="/petugas"
             element={
-              <ProtectedRoute allowedRoles={["petugas"]}>
+              <ProtectedRoute allowedRoles={["petugas", "super"]}>
                 <DashboardPetugas />
               </ProtectedRoute>
             }
@@ -59,7 +59,7 @@ export default function App() {
           <Route
             path="/admin"
             element={
-              <ProtectedRoute allowedRoles={["admin"]}>
+              <ProtectedRoute allowedRoles={["admin", "super"]}>
                 <DashboardAdmin />
               </ProtectedRoute>
             }
@@ -69,7 +69,7 @@ export default function App() {
           <Route
             path="/owner"
             element={
-              <ProtectedRoute allowedRoles={["owner"]}>
+              <ProtectedRoute allowedRoles={["owner", "super"]}>
                 <DashboardOwner />
               </ProtectedRoute>
             }

@@ -51,6 +51,18 @@ export const AuthProvider = ({ children }: any) => {
     }
   };
 
+//   const signOut = async () => {
+//   try {
+//     await supabase.auth.signOut();
+//     // Reset state agar RoleRedirect langsung bereaksi
+//     setSession(null);
+//     setRole(null);
+//     window.location.href = "/signin"; 
+//   } catch (error) {
+//     console.error("Error signing out:", error);
+//   }
+// };
+
   useEffect(() => {
     let isMounted = true;
 
@@ -68,7 +80,6 @@ export const AuthProvider = ({ children }: any) => {
         }
       } finally {
         if (isMounted) {
-          console.log("Semua proses selesai, mematikan loading...");
           setLoading(false);
         }
       }
