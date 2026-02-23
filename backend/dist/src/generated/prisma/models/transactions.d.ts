@@ -19,25 +19,25 @@ export type TransactionsSumAggregateOutputType = {
 };
 export type TransactionsMinAggregateOutputType = {
     id_transaction: number | null;
+    card_id: string | null;
     time_in: Date | null;
     time_out: Date | null;
-    card_id: string | null;
     fee: number | null;
     status: $Enums.transaction_status | null;
 };
 export type TransactionsMaxAggregateOutputType = {
     id_transaction: number | null;
+    card_id: string | null;
     time_in: Date | null;
     time_out: Date | null;
-    card_id: string | null;
     fee: number | null;
     status: $Enums.transaction_status | null;
 };
 export type TransactionsCountAggregateOutputType = {
     id_transaction: number;
+    card_id: number;
     time_in: number;
     time_out: number;
-    card_id: number;
     fee: number;
     status: number;
     _all: number;
@@ -52,25 +52,25 @@ export type TransactionsSumAggregateInputType = {
 };
 export type TransactionsMinAggregateInputType = {
     id_transaction?: true;
+    card_id?: true;
     time_in?: true;
     time_out?: true;
-    card_id?: true;
     fee?: true;
     status?: true;
 };
 export type TransactionsMaxAggregateInputType = {
     id_transaction?: true;
+    card_id?: true;
     time_in?: true;
     time_out?: true;
-    card_id?: true;
     fee?: true;
     status?: true;
 };
 export type TransactionsCountAggregateInputType = {
     id_transaction?: true;
+    card_id?: true;
     time_in?: true;
     time_out?: true;
-    card_id?: true;
     fee?: true;
     status?: true;
     _all?: true;
@@ -105,9 +105,9 @@ export type transactionsGroupByArgs<ExtArgs extends runtime.Types.Extensions.Int
 };
 export type TransactionsGroupByOutputType = {
     id_transaction: number;
+    card_id: string | null;
     time_in: Date;
     time_out: Date | null;
-    card_id: string | null;
     fee: number | null;
     status: $Enums.transaction_status;
     _count: TransactionsCountAggregateOutputType | null;
@@ -124,17 +124,17 @@ export type transactionsWhereInput = {
     OR?: Prisma.transactionsWhereInput[];
     NOT?: Prisma.transactionsWhereInput | Prisma.transactionsWhereInput[];
     id_transaction?: Prisma.IntFilter<"transactions"> | number;
+    card_id?: Prisma.StringNullableFilter<"transactions"> | string | null;
     time_in?: Prisma.DateTimeFilter<"transactions"> | Date | string;
     time_out?: Prisma.DateTimeNullableFilter<"transactions"> | Date | string | null;
-    card_id?: Prisma.StringNullableFilter<"transactions"> | string | null;
     fee?: Prisma.IntNullableFilter<"transactions"> | number | null;
     status?: Prisma.Enumtransaction_statusFilter<"transactions"> | $Enums.transaction_status;
 };
 export type transactionsOrderByWithRelationInput = {
     id_transaction?: Prisma.SortOrder;
+    card_id?: Prisma.SortOrderInput | Prisma.SortOrder;
     time_in?: Prisma.SortOrder;
     time_out?: Prisma.SortOrderInput | Prisma.SortOrder;
-    card_id?: Prisma.SortOrderInput | Prisma.SortOrder;
     fee?: Prisma.SortOrderInput | Prisma.SortOrder;
     status?: Prisma.SortOrder;
 };
@@ -143,17 +143,17 @@ export type transactionsWhereUniqueInput = Prisma.AtLeast<{
     AND?: Prisma.transactionsWhereInput | Prisma.transactionsWhereInput[];
     OR?: Prisma.transactionsWhereInput[];
     NOT?: Prisma.transactionsWhereInput | Prisma.transactionsWhereInput[];
+    card_id?: Prisma.StringNullableFilter<"transactions"> | string | null;
     time_in?: Prisma.DateTimeFilter<"transactions"> | Date | string;
     time_out?: Prisma.DateTimeNullableFilter<"transactions"> | Date | string | null;
-    card_id?: Prisma.StringNullableFilter<"transactions"> | string | null;
     fee?: Prisma.IntNullableFilter<"transactions"> | number | null;
     status?: Prisma.Enumtransaction_statusFilter<"transactions"> | $Enums.transaction_status;
 }, "id_transaction">;
 export type transactionsOrderByWithAggregationInput = {
     id_transaction?: Prisma.SortOrder;
+    card_id?: Prisma.SortOrderInput | Prisma.SortOrder;
     time_in?: Prisma.SortOrder;
     time_out?: Prisma.SortOrderInput | Prisma.SortOrder;
-    card_id?: Prisma.SortOrderInput | Prisma.SortOrder;
     fee?: Prisma.SortOrderInput | Prisma.SortOrder;
     status?: Prisma.SortOrder;
     _count?: Prisma.transactionsCountOrderByAggregateInput;
@@ -167,70 +167,70 @@ export type transactionsScalarWhereWithAggregatesInput = {
     OR?: Prisma.transactionsScalarWhereWithAggregatesInput[];
     NOT?: Prisma.transactionsScalarWhereWithAggregatesInput | Prisma.transactionsScalarWhereWithAggregatesInput[];
     id_transaction?: Prisma.IntWithAggregatesFilter<"transactions"> | number;
+    card_id?: Prisma.StringNullableWithAggregatesFilter<"transactions"> | string | null;
     time_in?: Prisma.DateTimeWithAggregatesFilter<"transactions"> | Date | string;
     time_out?: Prisma.DateTimeNullableWithAggregatesFilter<"transactions"> | Date | string | null;
-    card_id?: Prisma.StringNullableWithAggregatesFilter<"transactions"> | string | null;
     fee?: Prisma.IntNullableWithAggregatesFilter<"transactions"> | number | null;
     status?: Prisma.Enumtransaction_statusWithAggregatesFilter<"transactions"> | $Enums.transaction_status;
 };
 export type transactionsCreateInput = {
+    card_id?: string | null;
     time_in?: Date | string;
     time_out?: Date | string | null;
-    card_id?: string | null;
     fee?: number | null;
     status?: $Enums.transaction_status;
 };
 export type transactionsUncheckedCreateInput = {
     id_transaction?: number;
+    card_id?: string | null;
     time_in?: Date | string;
     time_out?: Date | string | null;
-    card_id?: string | null;
     fee?: number | null;
     status?: $Enums.transaction_status;
 };
 export type transactionsUpdateInput = {
+    card_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     time_in?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     time_out?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
-    card_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     fee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
     status?: Prisma.Enumtransaction_statusFieldUpdateOperationsInput | $Enums.transaction_status;
 };
 export type transactionsUncheckedUpdateInput = {
     id_transaction?: Prisma.IntFieldUpdateOperationsInput | number;
+    card_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     time_in?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     time_out?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
-    card_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     fee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
     status?: Prisma.Enumtransaction_statusFieldUpdateOperationsInput | $Enums.transaction_status;
 };
 export type transactionsCreateManyInput = {
     id_transaction?: number;
+    card_id?: string | null;
     time_in?: Date | string;
     time_out?: Date | string | null;
-    card_id?: string | null;
     fee?: number | null;
     status?: $Enums.transaction_status;
 };
 export type transactionsUpdateManyMutationInput = {
+    card_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     time_in?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     time_out?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
-    card_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     fee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
     status?: Prisma.Enumtransaction_statusFieldUpdateOperationsInput | $Enums.transaction_status;
 };
 export type transactionsUncheckedUpdateManyInput = {
     id_transaction?: Prisma.IntFieldUpdateOperationsInput | number;
+    card_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     time_in?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     time_out?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
-    card_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     fee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
     status?: Prisma.Enumtransaction_statusFieldUpdateOperationsInput | $Enums.transaction_status;
 };
 export type transactionsCountOrderByAggregateInput = {
     id_transaction?: Prisma.SortOrder;
+    card_id?: Prisma.SortOrder;
     time_in?: Prisma.SortOrder;
     time_out?: Prisma.SortOrder;
-    card_id?: Prisma.SortOrder;
     fee?: Prisma.SortOrder;
     status?: Prisma.SortOrder;
 };
@@ -240,17 +240,17 @@ export type transactionsAvgOrderByAggregateInput = {
 };
 export type transactionsMaxOrderByAggregateInput = {
     id_transaction?: Prisma.SortOrder;
+    card_id?: Prisma.SortOrder;
     time_in?: Prisma.SortOrder;
     time_out?: Prisma.SortOrder;
-    card_id?: Prisma.SortOrder;
     fee?: Prisma.SortOrder;
     status?: Prisma.SortOrder;
 };
 export type transactionsMinOrderByAggregateInput = {
     id_transaction?: Prisma.SortOrder;
+    card_id?: Prisma.SortOrder;
     time_in?: Prisma.SortOrder;
     time_out?: Prisma.SortOrder;
-    card_id?: Prisma.SortOrder;
     fee?: Prisma.SortOrder;
     status?: Prisma.SortOrder;
 };
@@ -258,14 +258,14 @@ export type transactionsSumOrderByAggregateInput = {
     id_transaction?: Prisma.SortOrder;
     fee?: Prisma.SortOrder;
 };
+export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null;
+};
 export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string;
 };
 export type NullableDateTimeFieldUpdateOperationsInput = {
     set?: Date | string | null;
-};
-export type NullableStringFieldUpdateOperationsInput = {
-    set?: string | null;
 };
 export type NullableIntFieldUpdateOperationsInput = {
     set?: number | null;
@@ -286,45 +286,45 @@ export type IntFieldUpdateOperationsInput = {
 };
 export type transactionsSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
     id_transaction?: boolean;
+    card_id?: boolean;
     time_in?: boolean;
     time_out?: boolean;
-    card_id?: boolean;
     fee?: boolean;
     status?: boolean;
 }, ExtArgs["result"]["transactions"]>;
 export type transactionsSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
     id_transaction?: boolean;
+    card_id?: boolean;
     time_in?: boolean;
     time_out?: boolean;
-    card_id?: boolean;
     fee?: boolean;
     status?: boolean;
 }, ExtArgs["result"]["transactions"]>;
 export type transactionsSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
     id_transaction?: boolean;
+    card_id?: boolean;
     time_in?: boolean;
     time_out?: boolean;
-    card_id?: boolean;
     fee?: boolean;
     status?: boolean;
 }, ExtArgs["result"]["transactions"]>;
 export type transactionsSelectScalar = {
     id_transaction?: boolean;
+    card_id?: boolean;
     time_in?: boolean;
     time_out?: boolean;
-    card_id?: boolean;
     fee?: boolean;
     status?: boolean;
 };
-export type transactionsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id_transaction" | "time_in" | "time_out" | "card_id" | "fee" | "status", ExtArgs["result"]["transactions"]>;
+export type transactionsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id_transaction" | "card_id" | "time_in" | "time_out" | "fee" | "status", ExtArgs["result"]["transactions"]>;
 export type $transactionsPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
     name: "transactions";
     objects: {};
     scalars: runtime.Types.Extensions.GetPayloadResult<{
         id_transaction: number;
+        card_id: string | null;
         time_in: Date;
         time_out: Date | null;
-        card_id: string | null;
         fee: number | null;
         status: $Enums.transaction_status;
     }, ExtArgs["result"]["transactions"]>;
@@ -385,9 +385,9 @@ export interface Prisma__transactionsClient<T, Null = never, ExtArgs extends run
 }
 export interface transactionsFieldRefs {
     readonly id_transaction: Prisma.FieldRef<"transactions", 'Int'>;
+    readonly card_id: Prisma.FieldRef<"transactions", 'String'>;
     readonly time_in: Prisma.FieldRef<"transactions", 'DateTime'>;
     readonly time_out: Prisma.FieldRef<"transactions", 'DateTime'>;
-    readonly card_id: Prisma.FieldRef<"transactions", 'String'>;
     readonly fee: Prisma.FieldRef<"transactions", 'Int'>;
     readonly status: Prisma.FieldRef<"transactions", 'transaction_status'>;
 }
