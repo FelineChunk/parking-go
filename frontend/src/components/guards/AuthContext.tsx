@@ -4,6 +4,7 @@ import { supabase } from "../../lib/supabase";
 interface AuthContextType {
   session: any;
   role: string | null;
+  username: string | null;
   loading: boolean;
   signIn: (email: string, password: string) => Promise<any>;
 }
@@ -11,18 +12,20 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType>({
   session: null,
   role: null,
+  username: null,
   loading: true,
-  signIn: async () => {},
+  signIn: async () => { },
 });
 
 export const AuthProvider = ({ children }: any) => {
   const [session, setSession] = useState<any>(null);
   const [role, setRole] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
+  const [username, setUsername] = useState<string | null>(null);
 
   const fetchRole = async (userId: string) => {
     try {
-      console.log("Memulai query tabel users...");
+
       // Tambahkan timeout manual agar tidak gantung selamanya
       const { data, error } = await supabase
         .from("users")
@@ -51,28 +54,33 @@ export const AuthProvider = ({ children }: any) => {
     }
   };
 
-//   const signOut = async () => {
-//   try {
-//     await supabase.auth.signOut();
-//     // Reset state agar RoleRedirect langsung bereaksi
-//     setSession(null);
-//     setRole(null);
-//     window.location.href = "/signin"; 
-//   } catch (error) {
-//     console.error("Error signing out:", error);
-//   }
-// };
+  //   const signOut = async () => {
+  //   try {
+  //     await supabase.auth.signOut();
+  //     // Reset state agar RoleRedirect langsung bereaksi
+  //     setSession(null);
+  //     setRole(null);
+  //     window.location.href = "/signin"; 
+  //   } catch (error) {
+  //     console.error("Error signing out:", error);
+  //   }
+  // };
 
   useEffect(() => {
     let isMounted = true;
 
     const handleAuth = async (currentSession: any) => {
       if (!isMounted) return;
-      
+
       try {
         if (currentSession) {
           setSession(currentSession);
           const r = await fetchRole(currentSession.user.id);
+          const uname =
+            currentSession.user.user_metadata?.username ||
+            currentSession.user.email;
+            setUsername(uname);
+
           if (isMounted) setRole(r);
         } else {
           setSession(null);
@@ -109,7 +117,7 @@ export const AuthProvider = ({ children }: any) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ session, role, loading, signIn }}>
+    <AuthContext.Provider value={{ session, role, username, loading, signIn }}>
       {children}
     </AuthContext.Provider>
   );

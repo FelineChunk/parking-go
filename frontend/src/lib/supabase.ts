@@ -8,7 +8,6 @@ export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
     persistSession: true,
     autoRefreshToken: true,
     detectSessionInUrl: true,
-    // Kita paksa pakai 'as any' supaya TS tidak error
     navigatorLockAcquireTimeoutMs: 0, 
   } as any, 
 });

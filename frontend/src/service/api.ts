@@ -4,7 +4,7 @@ const api = axios.create({
   baseURL: "http://localhost:3000",
 });
 
-export const getParkings = () => {
+export const getTransactions = () => {
   return api.get("/transactions");
 };
 
