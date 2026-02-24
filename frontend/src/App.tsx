@@ -4,6 +4,7 @@ import { ScrollToTop } from "./components/common/ScrollToTop";
 import SignIn from "./pages/AuthPages/SignIn";
 import SignUp from "./pages/AuthPages/SignUp";
 import NotFound from "./pages/OtherPage/NotFound";
+import HistoryPage from "./pages/Tables/History";
 
 import UserProfiles from "./pages/UserProfiles";
 import Videos from "./pages/UiElements/Videos";
@@ -21,11 +22,12 @@ import FormElements from "./pages/Forms/FormElements";
 import Blank from "./pages/Blank";
 
 import AppLayout from "./layout/AppLayout";
+import AppLayoutHeader from "./layout/AppLayoutHeader";
 
 /* ===== ROLE DASHBOARD ===== */
 import DashboardPetugas from "./pages/Dashboard/DashboardPetugas";
-import DashboardAdmin from "./pages/Dashboard/DashboardAdmin";
 import DashboardOwner from "./pages/Dashboard/DashboardOwner";
+import DashboardAdmin from "./pages/Dashboard/DashboardAdmin";
 
 /* ===== AUTH ===== */
 import { ProtectedRoute } from "./components/guards/ProtectedRoute";
@@ -40,12 +42,12 @@ export default function App() {
         {/* ========================= */}
         {/* Layout Protected Routes   */}
         {/* ========================= */}
-        <Route element={<AppLayout />}>
 
-          {/* ✅ ROOT → Auto Redirect Berdasarkan Role */}
-          <Route path="/" element={<RoleRedirect />} />
+        {/* ✅ ROOT → Auto Redirect Berdasarkan Role */}
+        <Route path="/" element={<RoleRedirect />} />
 
-          {/* ✅ PETUGAS */}
+        {/* ✅ PETUGAS */}
+        {/* <Route element={<AppLayoutHeader />}> */}
           <Route
             path="/petugas"
             element={
@@ -54,17 +56,20 @@ export default function App() {
               </ProtectedRoute>
             }
           />
+            <Route path="/history" element={<HistoryPage/>}></Route>
+        {/* </Route> */}
 
-          {/* ✅ ADMIN */}
-          <Route
-            path="/admin"
-            element={
-              <ProtectedRoute allowedRoles={["admin", "super"]}>
-                <DashboardAdmin />
-              </ProtectedRoute>
-            }
-          />
+        {/* ✅ ADMIN */}
+        <Route
+          path="/admin"
+          element={
+            <ProtectedRoute allowedRoles={["admin", "super"]}>
+              <DashboardAdmin />
+            </ProtectedRoute>
+          }
+        />
 
+        <Route element={<AppLayout />}>
           {/* ✅ OWNER */}
           <Route
             path="/owner"
@@ -74,26 +79,26 @@ export default function App() {
               </ProtectedRoute>
             }
           />
-
-          {/* ========================= */}
-          {/* Pages umum                */}
-          {/* ========================= */}
-
-          <Route path="/profile" element={<UserProfiles />} />
-          <Route path="/calendar" element={<Calendar />} />
-          <Route path="/blank" element={<Blank />} />
-          <Route path="/form-elements" element={<FormElements />} />
-          <Route path="/basic-tables" element={<BasicTables />} />
-          <Route path="/alerts" element={<Alerts />} />
-          <Route path="/avatars" element={<Avatars />} />
-          <Route path="/badge" element={<Badges />} />
-          <Route path="/buttons" element={<Buttons />} />
-          <Route path="/images" element={<Images />} />
-          <Route path="/videos" element={<Videos />} />
-          <Route path="/line-chart" element={<LineChart />} />
-          <Route path="/bar-chart" element={<BarChart />} />
-
         </Route>
+
+        {/* ========================= */}
+        {/* Pages umum                */}
+        {/* ========================= */}
+
+        <Route path="/profile" element={<UserProfiles />} />
+        <Route path="/calendar" element={<Calendar />} />
+        <Route path="/blank" element={<Blank />} />
+        <Route path="/form-elements" element={<FormElements />} />
+        <Route path="/basic-tables" element={<BasicTables />} />
+        <Route path="/alerts" element={<Alerts />} />
+        <Route path="/avatars" element={<Avatars />} />
+        <Route path="/badge" element={<Badges />} />
+        <Route path="/buttons" element={<Buttons />} />
+        <Route path="/images" element={<Images />} />
+        <Route path="/videos" element={<Videos />} />
+        <Route path="/line-chart" element={<LineChart />} />
+        <Route path="/bar-chart" element={<BarChart />} />
+
 
         {/* ========================= */}
         {/* Public Routes             */}

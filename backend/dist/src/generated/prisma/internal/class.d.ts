@@ -31,5 +31,68 @@ export interface PrismaClient<in LogOpts extends Prisma.LogLevel = never, in out
     get transactions(): Prisma.transactionsDelegate<ExtArgs, {
         omit: OmitOpts;
     }>;
+    get audit_log_entries(): Prisma.audit_log_entriesDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    get flow_state(): Prisma.flow_stateDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    get identities(): Prisma.identitiesDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    get instances(): Prisma.instancesDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    get mfa_amr_claims(): Prisma.mfa_amr_claimsDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    get mfa_challenges(): Prisma.mfa_challengesDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    get mfa_factors(): Prisma.mfa_factorsDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    get oauth_authorizations(): Prisma.oauth_authorizationsDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    get oauth_client_states(): Prisma.oauth_client_statesDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    get oauth_clients(): Prisma.oauth_clientsDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    get oauth_consents(): Prisma.oauth_consentsDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    get one_time_tokens(): Prisma.one_time_tokensDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    get refresh_tokens(): Prisma.refresh_tokensDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    get saml_providers(): Prisma.saml_providersDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    get saml_relay_states(): Prisma.saml_relay_statesDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    get schema_migrations(): Prisma.schema_migrationsDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    get sessions(): Prisma.sessionsDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    get sso_domains(): Prisma.sso_domainsDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    get sso_providers(): Prisma.sso_providersDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    get auth_users(): Prisma.auth_usersDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    get public_users(): Prisma.public_usersDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
 }
 export declare function getPrismaClientClass(): PrismaClientConstructor;
