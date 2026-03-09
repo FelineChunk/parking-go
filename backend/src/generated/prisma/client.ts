@@ -174,3 +174,8 @@ export type auth_users = Prisma.auth_usersModel
  * This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
  */
 export type public_users = Prisma.public_usersModel
+/**
+ * Model custom_oauth_providers
+ * This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+ */
+export type custom_oauth_providers = Prisma.custom_oauth_providersModel

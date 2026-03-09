@@ -80,7 +80,7 @@ export const AuthProvider = ({ children }: any) => {
             currentSession.user.user_metadata?.username ||
             currentSession.user.email;
             setUsername(uname);
-
+            console.log(currentSession);
           if (isMounted) setRole(r);
         } else {
           setSession(null);

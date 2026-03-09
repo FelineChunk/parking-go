@@ -179,6 +179,7 @@ export declare const ModelName: {
     readonly sso_providers: "sso_providers";
     readonly auth_users: "auth_users";
     readonly public_users: "public_users";
+    readonly custom_oauth_providers: "custom_oauth_providers";
 };
 export type ModelName = (typeof ModelName)[keyof typeof ModelName];
 export interface TypeMapCb<GlobalOmitOptions = {}> extends runtime.Types.Utils.Fn<{
@@ -191,7 +192,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         omit: GlobalOmitOptions;
     };
     meta: {
-        modelProps: "transactions" | "audit_log_entries" | "flow_state" | "identities" | "instances" | "mfa_amr_claims" | "mfa_challenges" | "mfa_factors" | "oauth_authorizations" | "oauth_client_states" | "oauth_clients" | "oauth_consents" | "one_time_tokens" | "refresh_tokens" | "saml_providers" | "saml_relay_states" | "schema_migrations" | "sessions" | "sso_domains" | "sso_providers" | "auth_users" | "public_users";
+        modelProps: "transactions" | "audit_log_entries" | "flow_state" | "identities" | "instances" | "mfa_amr_claims" | "mfa_challenges" | "mfa_factors" | "oauth_authorizations" | "oauth_client_states" | "oauth_clients" | "oauth_consents" | "one_time_tokens" | "refresh_tokens" | "saml_providers" | "saml_relay_states" | "schema_migrations" | "sessions" | "sso_domains" | "sso_providers" | "auth_users" | "public_users" | "custom_oauth_providers";
         txIsolationLevel: TransactionIsolationLevel;
     };
     model: {
@@ -1823,6 +1824,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
                 };
             };
         };
+        custom_oauth_providers: {
+            payload: Prisma.$custom_oauth_providersPayload<ExtArgs>;
+            fields: Prisma.custom_oauth_providersFieldRefs;
+            operations: {
+                findUnique: {
+                    args: Prisma.custom_oauth_providersFindUniqueArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$custom_oauth_providersPayload> | null;
+                };
+                findUniqueOrThrow: {
+                    args: Prisma.custom_oauth_providersFindUniqueOrThrowArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$custom_oauth_providersPayload>;
+                };
+                findFirst: {
+                    args: Prisma.custom_oauth_providersFindFirstArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$custom_oauth_providersPayload> | null;
+                };
+                findFirstOrThrow: {
+                    args: Prisma.custom_oauth_providersFindFirstOrThrowArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$custom_oauth_providersPayload>;
+                };
+                findMany: {
+                    args: Prisma.custom_oauth_providersFindManyArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$custom_oauth_providersPayload>[];
+                };
+                create: {
+                    args: Prisma.custom_oauth_providersCreateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$custom_oauth_providersPayload>;
+                };
+                createMany: {
+                    args: Prisma.custom_oauth_providersCreateManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                createManyAndReturn: {
+                    args: Prisma.custom_oauth_providersCreateManyAndReturnArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$custom_oauth_providersPayload>[];
+                };
+                delete: {
+                    args: Prisma.custom_oauth_providersDeleteArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$custom_oauth_providersPayload>;
+                };
+                update: {
+                    args: Prisma.custom_oauth_providersUpdateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$custom_oauth_providersPayload>;
+                };
+                deleteMany: {
+                    args: Prisma.custom_oauth_providersDeleteManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                updateMany: {
+                    args: Prisma.custom_oauth_providersUpdateManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                updateManyAndReturn: {
+                    args: Prisma.custom_oauth_providersUpdateManyAndReturnArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$custom_oauth_providersPayload>[];
+                };
+                upsert: {
+                    args: Prisma.custom_oauth_providersUpsertArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$custom_oauth_providersPayload>;
+                };
+                aggregate: {
+                    args: Prisma.Custom_oauth_providersAggregateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.AggregateCustom_oauth_providers>;
+                };
+                groupBy: {
+                    args: Prisma.custom_oauth_providersGroupByArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.Custom_oauth_providersGroupByOutputType>[];
+                };
+                count: {
+                    args: Prisma.custom_oauth_providersCountArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.Custom_oauth_providersCountAggregateOutputType> | number;
+                };
+            };
+        };
     };
 } & {
     other: {
@@ -2125,6 +2200,33 @@ export declare const Public_usersScalarFieldEnum: {
     readonly role: "role";
 };
 export type Public_usersScalarFieldEnum = (typeof Public_usersScalarFieldEnum)[keyof typeof Public_usersScalarFieldEnum];
+export declare const Custom_oauth_providersScalarFieldEnum: {
+    readonly id: "id";
+    readonly provider_type: "provider_type";
+    readonly identifier: "identifier";
+    readonly name: "name";
+    readonly client_id: "client_id";
+    readonly client_secret: "client_secret";
+    readonly acceptable_client_ids: "acceptable_client_ids";
+    readonly scopes: "scopes";
+    readonly pkce_enabled: "pkce_enabled";
+    readonly attribute_mapping: "attribute_mapping";
+    readonly authorization_params: "authorization_params";
+    readonly enabled: "enabled";
+    readonly email_optional: "email_optional";
+    readonly issuer: "issuer";
+    readonly discovery_url: "discovery_url";
+    readonly skip_nonce_check: "skip_nonce_check";
+    readonly cached_discovery: "cached_discovery";
+    readonly discovery_cached_at: "discovery_cached_at";
+    readonly authorization_url: "authorization_url";
+    readonly token_url: "token_url";
+    readonly userinfo_url: "userinfo_url";
+    readonly jwks_uri: "jwks_uri";
+    readonly created_at: "created_at";
+    readonly updated_at: "updated_at";
+};
+export type Custom_oauth_providersScalarFieldEnum = (typeof Custom_oauth_providersScalarFieldEnum)[keyof typeof Custom_oauth_providersScalarFieldEnum];
 export declare const SortOrder: {
     readonly asc: "asc";
     readonly desc: "desc";
@@ -2186,8 +2288,8 @@ export type BigIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 
 export type ListBigIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BigInt[]'>;
 export type Enumaal_levelFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'aal_level'>;
 export type ListEnumaal_levelFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'aal_level[]'>;
-export type Enumlevel_betaFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'level_beta'>;
-export type ListEnumlevel_betaFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'level_beta[]'>;
+export type EnumlevelFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'level'>;
+export type ListEnumlevelFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'level[]'>;
 export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>;
 export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>;
 export type BatchPayload = {
@@ -2236,6 +2338,7 @@ export type GlobalOmitConfig = {
     sso_providers?: Prisma.sso_providersOmit;
     auth_users?: Prisma.auth_usersOmit;
     public_users?: Prisma.public_usersOmit;
+    custom_oauth_providers?: Prisma.custom_oauth_providersOmit;
 };
 export type LogLevel = 'info' | 'query' | 'warn' | 'error';
 export type LogDefinition = {

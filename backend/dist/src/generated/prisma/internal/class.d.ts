@@ -94,5 +94,8 @@ export interface PrismaClient<in LogOpts extends Prisma.LogLevel = never, in out
     get public_users(): Prisma.public_usersDelegate<ExtArgs, {
         omit: OmitOpts;
     }>;
+    get custom_oauth_providers(): Prisma.custom_oauth_providersDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
 }
 export declare function getPrismaClientClass(): PrismaClientConstructor;
