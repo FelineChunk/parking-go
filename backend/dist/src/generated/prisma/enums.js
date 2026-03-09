@@ -49,11 +49,6 @@ export const one_time_token_type = {
 export const level = {
     admin: 'admin',
     petugas: 'petugas',
-    owner: 'owner'
-};
-export const level_beta = {
-    admin: 'admin',
-    petugas: 'petugas',
     owner: 'owner',
     super: 'super'
 };
@@ -65,5 +60,11 @@ export const status = {
 export const type_kendaraan = {
     roda_dua: 'roda_dua',
     roda_empat: 'roda_empat'
+};
+export const level_beta = {
+    admin: 'admin',
+    petugas: 'petugas',
+    owner: 'owner',
+    super: 'super'
 };
 //# sourceMappingURL=enums.js.map

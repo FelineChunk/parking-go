@@ -24,3 +24,4 @@ export type sso_domains = Prisma.sso_domainsModel;
 export type sso_providers = Prisma.sso_providersModel;
 export type auth_users = Prisma.auth_usersModel;
 export type public_users = Prisma.public_usersModel;
+export type custom_oauth_providers = Prisma.custom_oauth_providersModel;

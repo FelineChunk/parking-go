@@ -30,7 +30,8 @@ export const ModelName = {
     sso_domains: 'sso_domains',
     sso_providers: 'sso_providers',
     auth_users: 'auth_users',
-    public_users: 'public_users'
+    public_users: 'public_users',
+    custom_oauth_providers: 'custom_oauth_providers'
 };
 export const TransactionIsolationLevel = runtime.makeStrictEnum({
     ReadUncommitted: 'ReadUncommitted',
@@ -286,6 +287,32 @@ export const Public_usersScalarFieldEnum = {
     username: 'username',
     created_at: 'created_at',
     role: 'role'
+};
+export const Custom_oauth_providersScalarFieldEnum = {
+    id: 'id',
+    provider_type: 'provider_type',
+    identifier: 'identifier',
+    name: 'name',
+    client_id: 'client_id',
+    client_secret: 'client_secret',
+    acceptable_client_ids: 'acceptable_client_ids',
+    scopes: 'scopes',
+    pkce_enabled: 'pkce_enabled',
+    attribute_mapping: 'attribute_mapping',
+    authorization_params: 'authorization_params',
+    enabled: 'enabled',
+    email_optional: 'email_optional',
+    issuer: 'issuer',
+    discovery_url: 'discovery_url',
+    skip_nonce_check: 'skip_nonce_check',
+    cached_discovery: 'cached_discovery',
+    discovery_cached_at: 'discovery_cached_at',
+    authorization_url: 'authorization_url',
+    token_url: 'token_url',
+    userinfo_url: 'userinfo_url',
+    jwks_uri: 'jwks_uri',
+    created_at: 'created_at',
+    updated_at: 'updated_at'
 };
 export const SortOrder = {
     asc: 'asc',

@@ -509,20 +509,20 @@ export type BigIntNullableWithAggregatesFilter<$PrismaModel = never> = {
     _min?: Prisma.NestedBigIntNullableFilter<$PrismaModel>;
     _max?: Prisma.NestedBigIntNullableFilter<$PrismaModel>;
 };
-export type Enumlevel_betaNullableFilter<$PrismaModel = never> = {
-    equals?: $Enums.level_beta | Prisma.Enumlevel_betaFieldRefInput<$PrismaModel> | null;
-    in?: $Enums.level_beta[] | Prisma.ListEnumlevel_betaFieldRefInput<$PrismaModel> | null;
-    notIn?: $Enums.level_beta[] | Prisma.ListEnumlevel_betaFieldRefInput<$PrismaModel> | null;
-    not?: Prisma.NestedEnumlevel_betaNullableFilter<$PrismaModel> | $Enums.level_beta | null;
+export type EnumlevelNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.level | Prisma.EnumlevelFieldRefInput<$PrismaModel> | null;
+    in?: $Enums.level[] | Prisma.ListEnumlevelFieldRefInput<$PrismaModel> | null;
+    notIn?: $Enums.level[] | Prisma.ListEnumlevelFieldRefInput<$PrismaModel> | null;
+    not?: Prisma.NestedEnumlevelNullableFilter<$PrismaModel> | $Enums.level | null;
 };
-export type Enumlevel_betaNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.level_beta | Prisma.Enumlevel_betaFieldRefInput<$PrismaModel> | null;
-    in?: $Enums.level_beta[] | Prisma.ListEnumlevel_betaFieldRefInput<$PrismaModel> | null;
-    notIn?: $Enums.level_beta[] | Prisma.ListEnumlevel_betaFieldRefInput<$PrismaModel> | null;
-    not?: Prisma.NestedEnumlevel_betaNullableWithAggregatesFilter<$PrismaModel> | $Enums.level_beta | null;
+export type EnumlevelNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.level | Prisma.EnumlevelFieldRefInput<$PrismaModel> | null;
+    in?: $Enums.level[] | Prisma.ListEnumlevelFieldRefInput<$PrismaModel> | null;
+    notIn?: $Enums.level[] | Prisma.ListEnumlevelFieldRefInput<$PrismaModel> | null;
+    not?: Prisma.NestedEnumlevelNullableWithAggregatesFilter<$PrismaModel> | $Enums.level | null;
     _count?: Prisma.NestedIntNullableFilter<$PrismaModel>;
-    _min?: Prisma.NestedEnumlevel_betaNullableFilter<$PrismaModel>;
-    _max?: Prisma.NestedEnumlevel_betaNullableFilter<$PrismaModel>;
+    _min?: Prisma.NestedEnumlevelNullableFilter<$PrismaModel>;
+    _max?: Prisma.NestedEnumlevelNullableFilter<$PrismaModel>;
 };
 export type NestedIntFilter<$PrismaModel = never> = {
     equals?: number | Prisma.IntFieldRefInput<$PrismaModel>;
@@ -1000,18 +1000,18 @@ export type NestedBigIntNullableWithAggregatesFilter<$PrismaModel = never> = {
     _min?: Prisma.NestedBigIntNullableFilter<$PrismaModel>;
     _max?: Prisma.NestedBigIntNullableFilter<$PrismaModel>;
 };
-export type NestedEnumlevel_betaNullableFilter<$PrismaModel = never> = {
-    equals?: $Enums.level_beta | Prisma.Enumlevel_betaFieldRefInput<$PrismaModel> | null;
-    in?: $Enums.level_beta[] | Prisma.ListEnumlevel_betaFieldRefInput<$PrismaModel> | null;
-    notIn?: $Enums.level_beta[] | Prisma.ListEnumlevel_betaFieldRefInput<$PrismaModel> | null;
-    not?: Prisma.NestedEnumlevel_betaNullableFilter<$PrismaModel> | $Enums.level_beta | null;
+export type NestedEnumlevelNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.level | Prisma.EnumlevelFieldRefInput<$PrismaModel> | null;
+    in?: $Enums.level[] | Prisma.ListEnumlevelFieldRefInput<$PrismaModel> | null;
+    notIn?: $Enums.level[] | Prisma.ListEnumlevelFieldRefInput<$PrismaModel> | null;
+    not?: Prisma.NestedEnumlevelNullableFilter<$PrismaModel> | $Enums.level | null;
 };
-export type NestedEnumlevel_betaNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.level_beta | Prisma.Enumlevel_betaFieldRefInput<$PrismaModel> | null;
-    in?: $Enums.level_beta[] | Prisma.ListEnumlevel_betaFieldRefInput<$PrismaModel> | null;
-    notIn?: $Enums.level_beta[] | Prisma.ListEnumlevel_betaFieldRefInput<$PrismaModel> | null;
-    not?: Prisma.NestedEnumlevel_betaNullableWithAggregatesFilter<$PrismaModel> | $Enums.level_beta | null;
+export type NestedEnumlevelNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.level | Prisma.EnumlevelFieldRefInput<$PrismaModel> | null;
+    in?: $Enums.level[] | Prisma.ListEnumlevelFieldRefInput<$PrismaModel> | null;
+    notIn?: $Enums.level[] | Prisma.ListEnumlevelFieldRefInput<$PrismaModel> | null;
+    not?: Prisma.NestedEnumlevelNullableWithAggregatesFilter<$PrismaModel> | $Enums.level | null;
     _count?: Prisma.NestedIntNullableFilter<$PrismaModel>;
-    _min?: Prisma.NestedEnumlevel_betaNullableFilter<$PrismaModel>;
-    _max?: Prisma.NestedEnumlevel_betaNullableFilter<$PrismaModel>;
+    _min?: Prisma.NestedEnumlevelNullableFilter<$PrismaModel>;
+    _max?: Prisma.NestedEnumlevelNullableFilter<$PrismaModel>;
 };

@@ -28,14 +28,14 @@ export type Public_usersMinAggregateOutputType = {
   id_user: string | null
   username: string | null
   created_at: Date | null
-  role: $Enums.level_beta | null
+  role: $Enums.level | null
 }
 
 export type Public_usersMaxAggregateOutputType = {
   id_user: string | null
   username: string | null
   created_at: Date | null
-  role: $Enums.level_beta | null
+  role: $Enums.level | null
 }
 
 export type Public_usersCountAggregateOutputType = {
@@ -145,7 +145,7 @@ export type Public_usersGroupByOutputType = {
   id_user: string
   username: string | null
   created_at: Date | null
-  role: $Enums.level_beta | null
+  role: $Enums.level | null
   _count: Public_usersCountAggregateOutputType | null
   _min: Public_usersMinAggregateOutputType | null
   _max: Public_usersMaxAggregateOutputType | null
@@ -173,7 +173,7 @@ export type public_usersWhereInput = {
   id_user?: Prisma.UuidFilter<"public_users"> | string
   username?: Prisma.StringNullableFilter<"public_users"> | string | null
   created_at?: Prisma.DateTimeNullableFilter<"public_users"> | Date | string | null
-  role?: Prisma.Enumlevel_betaNullableFilter<"public_users"> | $Enums.level_beta | null
+  role?: Prisma.EnumlevelNullableFilter<"public_users"> | $Enums.level | null
   users?: Prisma.XOR<Prisma.Auth_usersScalarRelationFilter, Prisma.auth_usersWhereInput>
 }
 
@@ -192,7 +192,7 @@ export type public_usersWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.public_usersWhereInput | Prisma.public_usersWhereInput[]
   username?: Prisma.StringNullableFilter<"public_users"> | string | null
   created_at?: Prisma.DateTimeNullableFilter<"public_users"> | Date | string | null
-  role?: Prisma.Enumlevel_betaNullableFilter<"public_users"> | $Enums.level_beta | null
+  role?: Prisma.EnumlevelNullableFilter<"public_users"> | $Enums.level | null
   users?: Prisma.XOR<Prisma.Auth_usersScalarRelationFilter, Prisma.auth_usersWhereInput>
 }, "id_user">
 
@@ -213,13 +213,13 @@ export type public_usersScalarWhereWithAggregatesInput = {
   id_user?: Prisma.UuidWithAggregatesFilter<"public_users"> | string
   username?: Prisma.StringNullableWithAggregatesFilter<"public_users"> | string | null
   created_at?: Prisma.DateTimeNullableWithAggregatesFilter<"public_users"> | Date | string | null
-  role?: Prisma.Enumlevel_betaNullableWithAggregatesFilter<"public_users"> | $Enums.level_beta | null
+  role?: Prisma.EnumlevelNullableWithAggregatesFilter<"public_users"> | $Enums.level | null
 }
 
 export type public_usersCreateInput = {
   username?: string | null
   created_at?: Date | string | null
-  role?: $Enums.level_beta | null
+  role?: $Enums.level | null
   users: Prisma.auth_usersCreateNestedOneWithoutUsersInput
 }
 
@@ -227,13 +227,13 @@ export type public_usersUncheckedCreateInput = {
   id_user: string
   username?: string | null
   created_at?: Date | string | null
-  role?: $Enums.level_beta | null
+  role?: $Enums.level | null
 }
 
 export type public_usersUpdateInput = {
   username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  role?: Prisma.NullableEnumlevel_betaFieldUpdateOperationsInput | $Enums.level_beta | null
+  role?: Prisma.NullableEnumlevelFieldUpdateOperationsInput | $Enums.level | null
   users?: Prisma.auth_usersUpdateOneRequiredWithoutUsersNestedInput
 }
 
@@ -241,27 +241,27 @@ export type public_usersUncheckedUpdateInput = {
   id_user?: Prisma.StringFieldUpdateOperationsInput | string
   username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  role?: Prisma.NullableEnumlevel_betaFieldUpdateOperationsInput | $Enums.level_beta | null
+  role?: Prisma.NullableEnumlevelFieldUpdateOperationsInput | $Enums.level | null
 }
 
 export type public_usersCreateManyInput = {
   id_user: string
   username?: string | null
   created_at?: Date | string | null
-  role?: $Enums.level_beta | null
+  role?: $Enums.level | null
 }
 
 export type public_usersUpdateManyMutationInput = {
   username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  role?: Prisma.NullableEnumlevel_betaFieldUpdateOperationsInput | $Enums.level_beta | null
+  role?: Prisma.NullableEnumlevelFieldUpdateOperationsInput | $Enums.level | null
 }
 
 export type public_usersUncheckedUpdateManyInput = {
   id_user?: Prisma.StringFieldUpdateOperationsInput | string
   username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  role?: Prisma.NullableEnumlevel_betaFieldUpdateOperationsInput | $Enums.level_beta | null
+  role?: Prisma.NullableEnumlevelFieldUpdateOperationsInput | $Enums.level | null
 }
 
 export type Public_usersNullableScalarRelationFilter = {
@@ -322,20 +322,20 @@ export type public_usersUncheckedUpdateOneWithoutUsersNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.public_usersUpdateToOneWithWhereWithoutUsersInput, Prisma.public_usersUpdateWithoutUsersInput>, Prisma.public_usersUncheckedUpdateWithoutUsersInput>
 }
 
-export type NullableEnumlevel_betaFieldUpdateOperationsInput = {
-  set?: $Enums.level_beta | null
+export type NullableEnumlevelFieldUpdateOperationsInput = {
+  set?: $Enums.level | null
 }
 
 export type public_usersCreateWithoutUsersInput = {
   username?: string | null
   created_at?: Date | string | null
-  role?: $Enums.level_beta | null
+  role?: $Enums.level | null
 }
 
 export type public_usersUncheckedCreateWithoutUsersInput = {
   username?: string | null
   created_at?: Date | string | null
-  role?: $Enums.level_beta | null
+  role?: $Enums.level | null
 }
 
 export type public_usersCreateOrConnectWithoutUsersInput = {
@@ -357,13 +357,13 @@ export type public_usersUpdateToOneWithWhereWithoutUsersInput = {
 export type public_usersUpdateWithoutUsersInput = {
   username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  role?: Prisma.NullableEnumlevel_betaFieldUpdateOperationsInput | $Enums.level_beta | null
+  role?: Prisma.NullableEnumlevelFieldUpdateOperationsInput | $Enums.level | null
 }
 
 export type public_usersUncheckedUpdateWithoutUsersInput = {
   username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  role?: Prisma.NullableEnumlevel_betaFieldUpdateOperationsInput | $Enums.level_beta | null
+  role?: Prisma.NullableEnumlevelFieldUpdateOperationsInput | $Enums.level | null
 }
 
 
@@ -419,7 +419,7 @@ export type $public_usersPayload<ExtArgs extends runtime.Types.Extensions.Intern
     id_user: string
     username: string | null
     created_at: Date | null
-    role: $Enums.level_beta | null
+    role: $Enums.level | null
   }, ExtArgs["result"]["public_users"]>
   composites: {}
 }
@@ -847,7 +847,7 @@ export interface public_usersFieldRefs {
   readonly id_user: Prisma.FieldRef<"public_users", 'String'>
   readonly username: Prisma.FieldRef<"public_users", 'String'>
   readonly created_at: Prisma.FieldRef<"public_users", 'DateTime'>
-  readonly role: Prisma.FieldRef<"public_users", 'level_beta'>
+  readonly role: Prisma.FieldRef<"public_users", 'level'>
 }
     
 

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import UserDropdown from "../../components/header/UserDropdown";
 import { createPortal } from "react-dom";
+import { getTransactions } from "../../service/api";
 // ─── Types ────────────────────────────────────────────────────────────────────
 
 interface Transaksi {
@@ -16,13 +17,13 @@ interface Transaksi {
 // ─── Mock — ganti dengan import getTransactions ───────────────────────────────
 
 
-const mockData: Transaksi[] = [
-  { id_transaksi: 1, waktu_masuk: "2025-02-24T08:00:00", waktu_keluar: null,                  fee: null,  card_id: 101, duration: null, status: "IN"   },
-  { id_transaksi: 2, waktu_masuk: "2025-02-24T07:30:00", waktu_keluar: null,                  fee: null,  card_id: 102, duration: null, status: "IN"   },
-  { id_transaksi: 3, waktu_masuk: "2025-02-24T06:45:00", waktu_keluar: "2025-02-24T09:00:00", fee: 5000,  card_id: 103, duration: 135,  status: "OUT"  },
-  { id_transaksi: 4, waktu_masuk: "2025-02-24T05:00:00", waktu_keluar: "2025-02-24T08:30:00", fee: 10000, card_id: 104, duration: 210,  status: "DONE" },
-  { id_transaksi: 5, waktu_masuk: "2025-02-24T09:10:00", waktu_keluar: null,                  fee: null,  card_id: 105, duration: null, status: "IN"   },
-];
+// const mockData: Transaksi[] = [
+//   { id_transaksi: 1, waktu_masuk: "2025-02-24T08:00:00", waktu_keluar: null,                  fee: null,  card_id: 101, duration: null, status: "IN"   },
+//   { id_transaksi: 2, waktu_masuk: "2025-02-24T07:30:00", waktu_keluar: null,                  fee: null,  card_id: 102, duration: null, status: "IN"   },
+//   { id_transaksi: 3, waktu_masuk: "2025-02-24T06:45:00", waktu_keluar: "2025-02-24T09:00:00", fee: 5000,  card_id: 103, duration: 135,  status: "OUT"  },
+//   { id_transaksi: 4, waktu_masuk: "2025-02-24T05:00:00", waktu_keluar: "2025-02-24T08:30:00", fee: 10000, card_id: 104, duration: 210,  status: "DONE" },
+//   { id_transaksi: 5, waktu_masuk: "2025-02-24T09:10:00", waktu_keluar: null,                  fee: null,  card_id: 105, duration: null, status: "IN"   },
+// ];
 
 // ─── Design tokens — monochrome, warm neutral ─────────────────────────────────
 const T = {
@@ -263,8 +264,8 @@ function ParkingPage() {
   const [lastUpdate, setLastUpdate] = useState(new Date());
 
   const fetchData = () => {
-    // getTransactions().then(res => { setData(res.data); setLastUpdate(new Date()); });
-    setData(mockData);
+    getTransactions().then(res => { setData(res.data); setLastUpdate(new Date()); });
+    // setData(mockData);
     setLastUpdate(new Date());
   };
 

@@ -60,15 +60,9 @@ export declare const level: {
     readonly admin: "admin";
     readonly petugas: "petugas";
     readonly owner: "owner";
-};
-export type level = (typeof level)[keyof typeof level];
-export declare const level_beta: {
-    readonly admin: "admin";
-    readonly petugas: "petugas";
-    readonly owner: "owner";
     readonly super: "super";
 };
-export type level_beta = (typeof level_beta)[keyof typeof level_beta];
+export type level = (typeof level)[keyof typeof level];
 export declare const status: {
     readonly IN: "IN";
     readonly OUT: "OUT";
@@ -80,3 +74,10 @@ export declare const type_kendaraan: {
     readonly roda_empat: "roda_empat";
 };
 export type type_kendaraan = (typeof type_kendaraan)[keyof typeof type_kendaraan];
+export declare const level_beta: {
+    readonly admin: "admin";
+    readonly petugas: "petugas";
+    readonly owner: "owner";
+    readonly super: "super";
+};
+export type level_beta = (typeof level_beta)[keyof typeof level_beta];

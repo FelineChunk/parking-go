@@ -100,20 +100,11 @@ export type one_time_token_type = (typeof one_time_token_type)[keyof typeof one_
 export const level = {
   admin: 'admin',
   petugas: 'petugas',
-  owner: 'owner'
-} as const
-
-export type level = (typeof level)[keyof typeof level]
-
-
-export const level_beta = {
-  admin: 'admin',
-  petugas: 'petugas',
   owner: 'owner',
   super: 'super'
 } as const
 
-export type level_beta = (typeof level_beta)[keyof typeof level_beta]
+export type level = (typeof level)[keyof typeof level]
 
 
 export const status = {
@@ -131,3 +122,13 @@ export const type_kendaraan = {
 } as const
 
 export type type_kendaraan = (typeof type_kendaraan)[keyof typeof type_kendaraan]
+
+
+export const level_beta = {
+  admin: 'admin',
+  petugas: 'petugas',
+  owner: 'owner',
+  super: 'super'
+} as const
+
+export type level_beta = (typeof level_beta)[keyof typeof level_beta]

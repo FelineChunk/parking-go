@@ -20,4 +20,5 @@ export type * from './models/sso_domains.js';
 export type * from './models/sso_providers.js';
 export type * from './models/auth_users.js';
 export type * from './models/public_users.js';
+export type * from './models/custom_oauth_providers.js';
 export type * from './commonInputTypes.js';
