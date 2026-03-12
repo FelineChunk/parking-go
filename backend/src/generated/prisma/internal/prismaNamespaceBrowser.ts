@@ -98,7 +98,8 @@ export const TransactionsScalarFieldEnum = {
   time_in: 'time_in',
   time_out: 'time_out',
   fee: 'fee',
-  status: 'status'
+  status: 'status',
+  duration: 'duration'
 } as const
 
 export type TransactionsScalarFieldEnum = (typeof TransactionsScalarFieldEnum)[keyof typeof TransactionsScalarFieldEnum]

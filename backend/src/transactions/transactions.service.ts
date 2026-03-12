@@ -55,6 +55,59 @@ export class TransactionsService {
     });
   }
 
+  // kendaraan keluar (OUT)
+async checkout(id: number): Promise<transactions> {
+  const trx = await this.prisma.transactions.findUnique({
+    where: { id_transaction: id },
+  });
+
+  if (!trx) {
+    throw new Error("Transaction not found");
+  }
+
+  if (trx.status !== "IN") {
+    throw new Error("Vehicle already checked out");
+  }
+
+  const now = new Date();
+
+  const duration = Math.floor(
+    (now.getTime() - trx.time_in.getTime()) / 60000
+  );
+
+  const fee = Math.ceil(duration / 60) * 3000;
+
+  return this.prisma.transactions.update({
+    where: { id_transaction: id },
+    data: {
+      time_out: now,
+      duration,
+      fee,
+      status: "OUT",
+    },
+  });
+}
+
+async finishTransaction(id: number): Promise<transactions> {
+  const trx = await this.prisma.transactions.findUnique({
+    where: { id_transaction: id },
+  });
+
+  if (!trx) {
+    throw new Error("Transaction not found");
+  }
+
+  if (trx.status !== "OUT") {
+    throw new Error("Transaction must be OUT first");
+  }
+
+  return this.prisma.transactions.update({
+    where: { id_transaction: id },
+    data: {
+      status: "DONE",
+    },
+  });
+}
   // 🔹 Delete transaction
   async deleteTransaction(
     where: Prisma.transactionsWhereUniqueInput,

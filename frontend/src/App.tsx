@@ -4,7 +4,7 @@ import { ScrollToTop } from "./components/common/ScrollToTop";
 import SignIn from "./pages/AuthPages/SignIn";
 import SignUp from "./pages/AuthPages/SignUp";
 import NotFound from "./pages/OtherPage/NotFound";
-import HistoryPage from "./pages/Tables/History";
+import HistoryPage from "./pages/Dashboard/History";
 
 import UserProfiles from "./pages/UserProfiles";
 import Videos from "./pages/UiElements/Videos";
@@ -22,8 +22,8 @@ import BasicTables from "./pages/Tables/BasicTables";
 import FormElements from "./pages/Forms/FormElements";
 import Blank from "./pages/Blank";
 
-import AppLayout from "./layout/AppLayout";
-import AppLayoutHeader from "./layout/AppLayoutHeader";
+import AppLayoutHeader from "./layout/AppLayoutHeaderOwner";
+import AppLayoutHeaderPetugas from "./layout/AppLayoutHeaderPetugas";
 
 /* ===== ROLE DASHBOARD ===== */
 import DashboardPetugas from "./pages/Dashboard/DashboardPetugas";
@@ -40,50 +40,50 @@ export default function App() {
       <ScrollToTop />
       <Routes>
 
-        {/* ========================= */}
-        {/* Layout Protected Routes   */}
-        {/* ========================= */}
-
-        {/* ✅ ROOT → Auto Redirect Berdasarkan Role */}
+        {/* ROOT → Auto Redirect Berdasarkan Role */}
         <Route path="/" element={<RoleRedirect />} />
 
-        {/* ✅ PETUGAS */}
-        {/* <Route element={<AppLayoutHeader />}> */}
-          <Route
-            path="/petugas"
-            element={
-              <ProtectedRoute allowedRoles={["petugas", "super"]}>
-                <DashboardPetugas />
-              </ProtectedRoute>
-            }
-          />
-            <Route path="/history" element={<HistoryPage/>}></Route>
-        {/* </Route> */}
+        {/* ===== PETUGAS ===== */}
+        <Route
+          path="/petugas"
+          element={
+            <ProtectedRoute allowedRoles={["petugas", "super"]}>
+              <AppLayoutHeaderPetugas />
+            </ProtectedRoute>
+          }
+        >
+          <Route index element={<DashboardPetugas />} />
+          <Route path="history" element={<HistoryPage />} />
+        </Route>
 
-        {/* ✅ ADMIN */}
+        {/* ===== ADMIN ===== */}
         <Route
           path="/admin"
           element={
             <ProtectedRoute allowedRoles={["admin", "super"]}>
-              <DashboardAdmin />
+              <AppLayoutHeader />
             </ProtectedRoute>
           }
-        />
+        >
+          <Route index element={<DashboardAdmin />} />
+          <Route path="history" element={<HistoryPage />} />
+        </Route>
 
-        <Route element={<AppLayout />}>
-          {/* ✅ OWNER */}
-          <Route
-            path="/owner"
-            element={
-              <ProtectedRoute allowedRoles={["owner", "super"]}>
-                <DashboardOwner />
-              </ProtectedRoute>
-            }
-          />
+        {/* ===== OWNER ===== */}
+        <Route
+          path="/owner"
+          element={
+            <ProtectedRoute allowedRoles={["owner", "super"]}>
+              <AppLayoutHeader />
+            </ProtectedRoute>
+          }
+        >
+          <Route index element={<DashboardOwner />} />
+          <Route path="history" element={<HistoryPage />} />
         </Route>
 
         {/* ========================= */}
-        {/* Pages umum                */}
+        {/* Pages Umum                */}
         {/* ========================= */}
 
         <Route path="/profile" element={<UserProfiles />} />
@@ -100,7 +100,6 @@ export default function App() {
         <Route path="/line-chart" element={<LineChart />} />
         <Route path="/bar-chart" element={<BarChart />} />
         <Route path="/pie-chart" element={<PieChart />} />
-
 
         {/* ========================= */}
         {/* Public Routes             */}

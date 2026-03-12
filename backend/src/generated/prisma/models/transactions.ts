@@ -29,11 +29,13 @@ export type AggregateTransactions = {
 export type TransactionsAvgAggregateOutputType = {
   id_transaction: number | null
   fee: number | null
+  duration: number | null
 }
 
 export type TransactionsSumAggregateOutputType = {
   id_transaction: number | null
   fee: number | null
+  duration: number | null
 }
 
 export type TransactionsMinAggregateOutputType = {
@@ -43,6 +45,7 @@ export type TransactionsMinAggregateOutputType = {
   time_out: Date | null
   fee: number | null
   status: $Enums.transaction_status | null
+  duration: number | null
 }
 
 export type TransactionsMaxAggregateOutputType = {
@@ -52,6 +55,7 @@ export type TransactionsMaxAggregateOutputType = {
   time_out: Date | null
   fee: number | null
   status: $Enums.transaction_status | null
+  duration: number | null
 }
 
 export type TransactionsCountAggregateOutputType = {
@@ -61,6 +65,7 @@ export type TransactionsCountAggregateOutputType = {
   time_out: number
   fee: number
   status: number
+  duration: number
   _all: number
 }
 
@@ -68,11 +73,13 @@ export type TransactionsCountAggregateOutputType = {
 export type TransactionsAvgAggregateInputType = {
   id_transaction?: true
   fee?: true
+  duration?: true
 }
 
 export type TransactionsSumAggregateInputType = {
   id_transaction?: true
   fee?: true
+  duration?: true
 }
 
 export type TransactionsMinAggregateInputType = {
@@ -82,6 +89,7 @@ export type TransactionsMinAggregateInputType = {
   time_out?: true
   fee?: true
   status?: true
+  duration?: true
 }
 
 export type TransactionsMaxAggregateInputType = {
@@ -91,6 +99,7 @@ export type TransactionsMaxAggregateInputType = {
   time_out?: true
   fee?: true
   status?: true
+  duration?: true
 }
 
 export type TransactionsCountAggregateInputType = {
@@ -100,6 +109,7 @@ export type TransactionsCountAggregateInputType = {
   time_out?: true
   fee?: true
   status?: true
+  duration?: true
   _all?: true
 }
 
@@ -196,6 +206,7 @@ export type TransactionsGroupByOutputType = {
   time_out: Date | null
   fee: number | null
   status: $Enums.transaction_status
+  duration: number | null
   _count: TransactionsCountAggregateOutputType | null
   _avg: TransactionsAvgAggregateOutputType | null
   _sum: TransactionsSumAggregateOutputType | null
@@ -228,6 +239,7 @@ export type transactionsWhereInput = {
   time_out?: Prisma.DateTimeNullableFilter<"transactions"> | Date | string | null
   fee?: Prisma.IntNullableFilter<"transactions"> | number | null
   status?: Prisma.Enumtransaction_statusFilter<"transactions"> | $Enums.transaction_status
+  duration?: Prisma.IntNullableFilter<"transactions"> | number | null
 }
 
 export type transactionsOrderByWithRelationInput = {
@@ -237,6 +249,7 @@ export type transactionsOrderByWithRelationInput = {
   time_out?: Prisma.SortOrderInput | Prisma.SortOrder
   fee?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrder
+  duration?: Prisma.SortOrderInput | Prisma.SortOrder
 }
 
 export type transactionsWhereUniqueInput = Prisma.AtLeast<{
@@ -249,6 +262,7 @@ export type transactionsWhereUniqueInput = Prisma.AtLeast<{
   time_out?: Prisma.DateTimeNullableFilter<"transactions"> | Date | string | null
   fee?: Prisma.IntNullableFilter<"transactions"> | number | null
   status?: Prisma.Enumtransaction_statusFilter<"transactions"> | $Enums.transaction_status
+  duration?: Prisma.IntNullableFilter<"transactions"> | number | null
 }, "id_transaction">
 
 export type transactionsOrderByWithAggregationInput = {
@@ -258,6 +272,7 @@ export type transactionsOrderByWithAggregationInput = {
   time_out?: Prisma.SortOrderInput | Prisma.SortOrder
   fee?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrder
+  duration?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.transactionsCountOrderByAggregateInput
   _avg?: Prisma.transactionsAvgOrderByAggregateInput
   _max?: Prisma.transactionsMaxOrderByAggregateInput
@@ -275,6 +290,7 @@ export type transactionsScalarWhereWithAggregatesInput = {
   time_out?: Prisma.DateTimeNullableWithAggregatesFilter<"transactions"> | Date | string | null
   fee?: Prisma.IntNullableWithAggregatesFilter<"transactions"> | number | null
   status?: Prisma.Enumtransaction_statusWithAggregatesFilter<"transactions"> | $Enums.transaction_status
+  duration?: Prisma.IntNullableWithAggregatesFilter<"transactions"> | number | null
 }
 
 export type transactionsCreateInput = {
@@ -283,6 +299,7 @@ export type transactionsCreateInput = {
   time_out?: Date | string | null
   fee?: number | null
   status?: $Enums.transaction_status
+  duration?: number | null
 }
 
 export type transactionsUncheckedCreateInput = {
@@ -292,6 +309,7 @@ export type transactionsUncheckedCreateInput = {
   time_out?: Date | string | null
   fee?: number | null
   status?: $Enums.transaction_status
+  duration?: number | null
 }
 
 export type transactionsUpdateInput = {
@@ -300,6 +318,7 @@ export type transactionsUpdateInput = {
   time_out?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   fee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   status?: Prisma.Enumtransaction_statusFieldUpdateOperationsInput | $Enums.transaction_status
+  duration?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type transactionsUncheckedUpdateInput = {
@@ -309,6 +328,7 @@ export type transactionsUncheckedUpdateInput = {
   time_out?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   fee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   status?: Prisma.Enumtransaction_statusFieldUpdateOperationsInput | $Enums.transaction_status
+  duration?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type transactionsCreateManyInput = {
@@ -318,6 +338,7 @@ export type transactionsCreateManyInput = {
   time_out?: Date | string | null
   fee?: number | null
   status?: $Enums.transaction_status
+  duration?: number | null
 }
 
 export type transactionsUpdateManyMutationInput = {
@@ -326,6 +347,7 @@ export type transactionsUpdateManyMutationInput = {
   time_out?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   fee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   status?: Prisma.Enumtransaction_statusFieldUpdateOperationsInput | $Enums.transaction_status
+  duration?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type transactionsUncheckedUpdateManyInput = {
@@ -335,6 +357,7 @@ export type transactionsUncheckedUpdateManyInput = {
   time_out?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   fee?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   status?: Prisma.Enumtransaction_statusFieldUpdateOperationsInput | $Enums.transaction_status
+  duration?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type transactionsCountOrderByAggregateInput = {
@@ -344,11 +367,13 @@ export type transactionsCountOrderByAggregateInput = {
   time_out?: Prisma.SortOrder
   fee?: Prisma.SortOrder
   status?: Prisma.SortOrder
+  duration?: Prisma.SortOrder
 }
 
 export type transactionsAvgOrderByAggregateInput = {
   id_transaction?: Prisma.SortOrder
   fee?: Prisma.SortOrder
+  duration?: Prisma.SortOrder
 }
 
 export type transactionsMaxOrderByAggregateInput = {
@@ -358,6 +383,7 @@ export type transactionsMaxOrderByAggregateInput = {
   time_out?: Prisma.SortOrder
   fee?: Prisma.SortOrder
   status?: Prisma.SortOrder
+  duration?: Prisma.SortOrder
 }
 
 export type transactionsMinOrderByAggregateInput = {
@@ -367,11 +393,13 @@ export type transactionsMinOrderByAggregateInput = {
   time_out?: Prisma.SortOrder
   fee?: Prisma.SortOrder
   status?: Prisma.SortOrder
+  duration?: Prisma.SortOrder
 }
 
 export type transactionsSumOrderByAggregateInput = {
   id_transaction?: Prisma.SortOrder
   fee?: Prisma.SortOrder
+  duration?: Prisma.SortOrder
 }
 
 export type NullableStringFieldUpdateOperationsInput = {
@@ -415,6 +443,7 @@ export type transactionsSelect<ExtArgs extends runtime.Types.Extensions.Internal
   time_out?: boolean
   fee?: boolean
   status?: boolean
+  duration?: boolean
 }, ExtArgs["result"]["transactions"]>
 
 export type transactionsSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -424,6 +453,7 @@ export type transactionsSelectCreateManyAndReturn<ExtArgs extends runtime.Types.
   time_out?: boolean
   fee?: boolean
   status?: boolean
+  duration?: boolean
 }, ExtArgs["result"]["transactions"]>
 
 export type transactionsSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -433,6 +463,7 @@ export type transactionsSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.
   time_out?: boolean
   fee?: boolean
   status?: boolean
+  duration?: boolean
 }, ExtArgs["result"]["transactions"]>
 
 export type transactionsSelectScalar = {
@@ -442,9 +473,10 @@ export type transactionsSelectScalar = {
   time_out?: boolean
   fee?: boolean
   status?: boolean
+  duration?: boolean
 }
 
-export type transactionsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id_transaction" | "card_id" | "time_in" | "time_out" | "fee" | "status", ExtArgs["result"]["transactions"]>
+export type transactionsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id_transaction" | "card_id" | "time_in" | "time_out" | "fee" | "status" | "duration", ExtArgs["result"]["transactions"]>
 
 export type $transactionsPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "transactions"
@@ -456,6 +488,7 @@ export type $transactionsPayload<ExtArgs extends runtime.Types.Extensions.Intern
     time_out: Date | null
     fee: number | null
     status: $Enums.transaction_status
+    duration: number | null
   }, ExtArgs["result"]["transactions"]>
   composites: {}
 }
@@ -885,6 +918,7 @@ export interface transactionsFieldRefs {
   readonly time_out: Prisma.FieldRef<"transactions", 'DateTime'>
   readonly fee: Prisma.FieldRef<"transactions", 'Int'>
   readonly status: Prisma.FieldRef<"transactions", 'transaction_status'>
+  readonly duration: Prisma.FieldRef<"transactions", 'Int'>
 }
     
 

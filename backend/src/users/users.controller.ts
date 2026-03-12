@@ -23,7 +23,7 @@
     @Controller("users")
     @UseGuards(ThrottlerGuard, SupabaseAuthGuard, RolesGuard)
     export class UsersController {
-    constructor(private readonly usersService: UsersService) {}
+    constructor(private readonly usersService: UsersService) { }
 
     // GET /users — only admin & super
     @Get()
@@ -41,6 +41,11 @@
             ? ({ [orderBy]: "asc" } as Prisma.auth_usersOrderByWithRelationInput)
             : undefined,
         });
+    }
+    // GET /users/me atau /users/profile/:id
+    @Get("profile/:id")
+    async getPublicUser(@Param("id") id: string) {
+        return this.usersService.publicUser(id);  // ← pakai service, bukan this.prisma
     }
 
     // GET /users/:id — user can only see their own data, admin & super can see all
@@ -97,6 +102,8 @@
         return user;
     }
 
+
+
     // POST /users — only admin & super
     @Post()
     @Roles(level.admin, level.super)
@@ -119,3 +126,5 @@
         return this.usersService.deleteUser({ id });
     }
     }
+
+

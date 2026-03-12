@@ -11,9 +11,15 @@ export class UsersService {
   ): Promise<auth_users | null> {
     return this.prisma.auth_users.findUnique({
       where,
+      
     });
   }
 
+  async publicUser(id: string) {
+  return this.prisma.public_users.findUnique({
+    where: { id_user: id }
+  });
+}
  
   async users(params: {
     skip?: number;

@@ -3,9 +3,26 @@ import { ApexOptions } from "apexcharts";
 import { Dropdown } from "../ui/dropdown/Dropdown";
 import { DropdownItem } from "../ui/dropdown/DropdownItem";
 import { MoreDotIcon } from "../../icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getTransactions } from "../../service/TransactionsApi";
+import { Transactions } from "../../types/Types";
+
 
 export default function MonthlySalesChart() {
+   const [monthlyCounts, setMonthlyCounts] = useState<number[]>(Array(12).fill(0));
+   useEffect(() => {
+    getTransactions().then(res => {
+      const counts = Array(12).fill(0);
+      
+      res.data.forEach((trx: Transactions) => {
+        const month = new Date(trx.time_in).getMonth(); // 0–11
+        counts[month]++;
+      });
+
+      setMonthlyCounts(counts);
+    });
+  }, []);
+
   const options: ApexOptions = {
     colors: ["#465fff"],
     chart: {
@@ -87,8 +104,8 @@ export default function MonthlySalesChart() {
   };
   const series = [
     {
-      name: "Sales",
-      data: [168, 385, 201, 298, 187, 195, 291, 110, 215, 390, 280, 112],
+      name: "Transaksi",
+      data: monthlyCounts,
     },
   ];
   const [isOpen, setIsOpen] = useState(false);

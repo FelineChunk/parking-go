@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { getTransactions } from "../../service/api";
+import { getTransactions } from "../../service/Api";
 
 interface Transaksi {
   id_transaksi: number;

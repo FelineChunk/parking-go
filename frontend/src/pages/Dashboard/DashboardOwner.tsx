@@ -6,20 +6,11 @@ import RecentOrders from "../../components/ecommerce/RecentOrders";
 import DemographicCard from "../../components/ecommerce/DemographicCard";
 import PageMeta from "../../components/common/PageMeta";
 import { useState } from "react";
-import { getTransactions } from "../../service/api";
+import { getTransactions } from "../../service/TransactionsApi";
+import { Transactions } from "../../types/Types";
 
-interface Transaksi {
-  id_transaksi: number;
-  waktu_masuk: string;
-  waktu_keluar: string | null;
-  fee: number | null;
-  card_id: number | null;
-  duration: number | null;
-  status: string;
-}
-
-export default function DashboardAdmin() {
-  const [data, setData] = useState<Transaksi[]>([]);
+export default function DashboardOwner() {
+  const [data, setData] = useState<Transactions[]>([]);
 
   const fetchData = () => {
       getTransactions()
@@ -48,11 +39,11 @@ export default function DashboardAdmin() {
           <MonthlyTarget />
         </div>
 
-        <div className="col-span-12">
+        {/* <div className="col-span-12">
           <StatisticsChart />
         </div>
 
-        {/* <div className="col-span-12 xl:col-span-5">
+        <div className="col-span-12 xl:col-span-5">
           <DemographicCard />
         </div>
 
